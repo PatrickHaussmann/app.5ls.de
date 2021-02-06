@@ -46,14 +46,11 @@ div#list {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    /* grid-auto-rows: 200px; */
-    grid-auto-flow: dense;
+    grid-auto-flow: row;
 }
 
 img.icon {
-    /* width: 100%; */
-    width: 90%;
-    margin: 5%;
+    width: 100%;
 }
 
 div.item {
@@ -72,4 +69,21 @@ div.container {
 a {
     text-decoration: none;
     color: #111111;
+}
+
+p.link {
+    color: gray;
+    float: right;
+}
+
+a.link {
+    display: flex;
+    flex-direction: column;
+    height: 95%;
+    padding: 5%;
+}
+
+p.link {
+    margin-left: auto;
+    margin-top: auto;
 }
