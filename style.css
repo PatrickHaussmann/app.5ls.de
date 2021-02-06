@@ -1,0 +1,50 @@
+body {
+    padding: 0;
+    margin: 0;
+}
+
+html,
+body,
+#map {
+    height: 100%;
+    width: 100%;
+}
+
+.location-icon {
+    width: 3rem;
+    height: 3rem;
+    background-color: blue;
+}
+
+@keyframes spinner {
+    0% {
+        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+    }
+    100% {
+        transform: translate3d(-50%, -50%, 0) rotate(360deg);
+    }
+}
+
+#spinner::before {
+    animation: 1.5s linear infinite spinner;
+    animation-play-state: inherit;
+    border: solid 5px #cfd0d1;
+    border-bottom-color: #1c87c9;
+    border-radius: 50%;
+    content: "";
+    height: 6rem;
+    width: 6rem;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    will-change: transform;
+}
+
+img.icon {
+    width: 4rem;
+}
+
+div#list {
+    padding: 2vh 10vw;
+}
