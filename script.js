@@ -73,22 +73,9 @@ function create_item(repo) {
         a_link.href = repo.html_url;
     }
     a_link.alt = repo.name + "-icon";
-    p_link.innerText = a_link.href.replace("https://", "");
+    p_link.innerText = a_link.href.replace("https://", "").replace(/\/$/g, ''); // remove trailing slash
 
-    desc_url =
-        "https://cdn.jsdelivr.net/gh/" +
-        repo.full_name +
-        "@latest/description.txt";
-    f(
-        desc_url,
-        (data) => {
-            p_desc.innerText = data;
-        },
-        (type = "text"),
-        () => {
-            console.log("no desc for ", repo.name);
-        }
-    );
+    p_desc.innerText = repo.description;
 
     return el;
 }
