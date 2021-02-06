@@ -87,14 +87,11 @@ f("https://api.github.com/orgs/app-5ls-de/repos", (data) => {
         if (a.homepage && !b.homepage) return -1;
         if (!a.homepage && b.homepage) return 1;
 
-        if (a.description && !b.description) return -1;
-        if (!a.description && b.description) return 1;
-
         return b.updated_at.localeCompare(a.updated_at);
     });
 
     data.forEach((repo) => {
-        if (repo.archived || repo.disabled || repo.private) return;
+        if (repo.archived || repo.disabled || repo.private || !repo.description) return;
 
         mount(div_list, create_item(repo));
         //mount(div_list, redom.el("hr"));
