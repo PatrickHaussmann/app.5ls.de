@@ -37,8 +37,8 @@ function mount(parent, childs) {
 var div_list = document.getElementById("list");
 
 var custom_order = {
-    first: ["qr", "timer", "corona", "wetter"],
-    last: ["template", "todolist"],
+    first: ["qr", "timer", "corona", "wetter", "wallpaper", "doi"],
+    last: ["template", "todolist", "copy", "editor", "whiteboard"],
 };
 
 var updates = [];
