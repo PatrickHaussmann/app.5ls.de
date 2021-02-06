@@ -43,10 +43,12 @@ function create_item(repo) {
     let p_desc = redom.el("p.description");
     let p_link = redom.el("p.link");
     let a_link = redom.el("a.link", [
-        redom.el("h1.name", repo.name),
         img_icon,
-        p_desc,
-        p_link,
+        redom.el("div.container", [
+            redom.el("h1.name", repo.name),
+            p_desc,
+            p_link,
+        ]),
     ]);
     el = redom.el("div.item", a_link);
 
@@ -55,11 +57,11 @@ function create_item(repo) {
 
     if (repo.homepage) {
         a_link.href = repo.homepage;
-        p_link.innerText = repo.homepage.replace("https://", "");
     } else {
         a_link.href = repo.html_url;
-        p_link.innerText = repo.html_url.replace("https://", "");
     }
+    a_link.alt = repo.name + "-icon";
+    p_link.innerText = a_link.href.replace("https://", "");
 
     desc_url =
         "https://cdn.jsdelivr.net/gh/" +
@@ -86,7 +88,6 @@ f("https://api.github.com/orgs/app-5ls-de/repos", (data) => {
         if (a.homepage && !b.homepage) return -1;
         if (!a.homepage && b.homepage) return 1;
 
-
         if (a.description && !b.description) return -1;
         if (!a.description && b.description) return 1;
 
@@ -97,7 +98,7 @@ f("https://api.github.com/orgs/app-5ls-de/repos", (data) => {
         if (repo.archived || repo.disabled || repo.private) return;
 
         mount(div_list, create_item(repo));
-        mount(div_list, redom.el("hr"));
+        //mount(div_list, redom.el("hr"));
         console.log(repo.updated_at);
         //updates.push(repo.updated_at)
     });

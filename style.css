@@ -41,10 +41,35 @@ body,
     will-change: transform;
 }
 
-img.icon {
-    width: 4rem;
-}
-
 div#list {
     padding: 2vh 10vw;
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    /* grid-auto-rows: 200px; */
+    grid-auto-flow: dense;
+}
+
+img.icon {
+    /* width: 100%; */
+    width: 90%;
+    margin: 5%;
+}
+
+div.item {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    transition: 0.3s;
+}
+
+div.item:hover {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+}
+
+div.container {
+    padding: 2px 16px;
+}
+
+a {
+    text-decoration: none;
+    color: #111111;
 }
