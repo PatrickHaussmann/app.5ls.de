@@ -38,7 +38,7 @@ var div_list = document.getElementById("list");
 
 var custom_order = {
     first: ["qr", "timer", "corona", "wetter"],
-    last: ["template"],
+    last: ["template", "todolist"],
 };
 
 var updates = [];
