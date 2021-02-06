@@ -36,6 +36,11 @@ function mount(parent, childs) {
 
 var div_list = document.getElementById("list");
 
+var custom_order = {
+    first: ["qr", "timer", "corona", "wetter"],
+    last: ["template"],
+};
+
 var updates = [];
 
 function create_item(repo) {
@@ -47,10 +52,17 @@ function create_item(repo) {
         redom.el("div.container", [
             redom.el("h1.name", repo.name),
             p_desc,
-            p_link,
         ]),
+        p_link,
     ]);
+
     el = redom.el("div.item", a_link);
+
+    if (custom_order.first.includes(repo.name)) {
+        el.style.order = "-1";
+    } else if (custom_order.last.includes(repo.name)) {
+        el.style.order = "1";
+    }
 
     img_icon.src =
         "https://cdn.jsdelivr.net/gh/" + repo.full_name + "@latest/icon.svg";
