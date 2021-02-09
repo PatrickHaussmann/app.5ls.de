@@ -39,8 +39,8 @@ var div_list_conzept = document.getElementById("list-conzept");
 var div_list_ideas = document.getElementById("list-ideas");
 
 var custom_order = {
-    apps: ["timer", "qr", "wetter", "corona"],
-    conzept: ["copy", "editor", "calc", "todolist", "clock", "doi", "wallpaper", "color"],
+    apps: ["timer", "qr", "wetter", "corona", "doi", "wallpaper", "clock", "color"],
+    conzept: ["copy", "editor", "calc", "todolist"],
 };
 
 var updates = [];
