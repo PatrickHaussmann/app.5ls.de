@@ -51,7 +51,7 @@ function create_item(repo) {
     let p_link = redom.el("p.link");
     let a_github = redom.el(
         "a.github",
-        { href: repo.url },
+        { href: repo.html_url },
         redom.el("img.github", { src: "/github.svg" })
     );
     let a_link = redom.el("a.link", [
