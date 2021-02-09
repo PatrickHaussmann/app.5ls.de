@@ -34,11 +34,13 @@ function mount(parent, childs) {
     }
 }
 
-var div_list = document.getElementById("list");
+var div_list_apps = document.getElementById("list-apps");
+var div_list_conzept = document.getElementById("list-conzept");
+var div_list_ideas = document.getElementById("list-ideas");
 
 var custom_order = {
-    first: ["qr", "timer", "corona", "wetter"],
-    last: ["template", "todolist"],
+    apps: ["timer", "qr", "wetter", "corona"],
+    conzept: ["copy", "editor", "calc", "todolist", "clock", "doi", "wallpaper", "color"],
 };
 
 var updates = [];
@@ -47,22 +49,18 @@ function create_item(repo) {
     let img_icon = redom.el("img.icon");
     let p_desc = redom.el("p.description");
     let p_link = redom.el("p.link");
+    let a_github = redom.el(
+        "a.github",
+        { href: repo.url },
+        redom.el("img.github", { src: "/github.svg" })
+    );
     let a_link = redom.el("a.link", [
         img_icon,
-        redom.el("div.container", [
-            redom.el("h1.name", repo.name),
-            p_desc,
-        ]),
-        p_link,
+        redom.el("div.container", [redom.el("h1.name", repo.name), p_desc]),
+        redom.el("div.bottom", [a_github, p_link]),
     ]);
 
     el = redom.el("div.item", a_link);
-
-    if (custom_order.first.includes(repo.name)) {
-        el.style.order = "-1";
-    } else if (custom_order.last.includes(repo.name)) {
-        el.style.order = "1";
-    }
 
     img_icon.src =
         "https://cdn.jsdelivr.net/gh/" + repo.full_name + "@latest/icon.svg";
@@ -73,7 +71,7 @@ function create_item(repo) {
         a_link.href = repo.html_url;
     }
     a_link.alt = repo.name + "-icon";
-    p_link.innerText = a_link.href.replace("https://", "").replace(/\/$/g, ''); // remove trailing slash
+    p_link.innerText = a_link.href.replace("https://", "").replace(/\/$/g, ""); // remove trailing slash
 
     p_desc.innerText = repo.description;
 
@@ -91,11 +89,19 @@ f("https://api.github.com/orgs/app-5ls-de/repos", (data) => {
     });
 
     data.forEach((repo) => {
-        if (repo.archived || repo.disabled || repo.private || !repo.description) return;
+        if (repo.archived || repo.disabled || repo.private || !repo.description)
+            return;
 
-        mount(div_list, create_item(repo));
+        if (custom_order.apps.includes(repo.name)) {
+            mount(div_list_apps, create_item(repo));
+        } else if (custom_order.conzept.includes(repo.name)) {
+            mount(div_list_conzept, create_item(repo));
+        } else {
+            mount(div_list_ideas, create_item(repo));
+        }
+
         //mount(div_list, redom.el("hr"));
-        console.log(repo.updated_at);
+        //console.log(repo.updated_at);
         //updates.push(repo.updated_at)
     });
 });

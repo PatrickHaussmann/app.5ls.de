@@ -41,8 +41,11 @@ body,
     will-change: transform;
 }
 
-div#list {
+#list-container {
     padding: 2vh 10vw;
+}
+
+.list {
     display: grid;
     grid-gap: 10px;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -53,16 +56,16 @@ img.icon {
     width: 100%;
 }
 
-div.item {
+.item {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     transition: 0.3s;
 }
 
-div.item:hover {
+.item:hover {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
-div.container {
+.container {
     padding: 2px 16px;
 }
 
@@ -71,9 +74,19 @@ a {
     color: #111111;
 }
 
+.bottom {
+    display: flex;
+    justify-content: space-between;
+}
+
+img.github {
+    opacity: 0.33;
+    width: 1.2rem;
+}
+
 p.link {
     color: gray;
-    float: right;
+    margin: 0;
 }
 
 a.link {
@@ -83,7 +96,10 @@ a.link {
     padding: 5%;
 }
 
-p.link {
-    margin-left: auto;
-    margin-top: auto;
+h1 {
+    text-align: center;
+}
+
+.divider {
+    margin: 5rem 0;
 }
