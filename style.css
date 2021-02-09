@@ -16,6 +16,14 @@ body,
     background-color: blue;
 }
 
+#spinner {
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    background: white;
+}
+
+
 @keyframes spinner {
     0% {
         transform: translate3d(-50%, -50%, 0) rotate(0deg);
