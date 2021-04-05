@@ -23,7 +23,6 @@ body,
     background: white;
 }
 
-
 @keyframes spinner {
     0% {
         transform: translate3d(-50%, -50%, 0) rotate(0deg);
@@ -56,7 +55,7 @@ body,
 .list {
     display: grid;
     grid-gap: 10px;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     grid-auto-flow: row;
 }
 
@@ -85,6 +84,7 @@ a {
 .bottom {
     display: flex;
     justify-content: space-between;
+    margin-top: auto;
 }
 
 img.github {
